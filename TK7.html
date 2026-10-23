@@ -56,3 +56,104 @@
             padding: 15px;
             border-radius: 8px;
             font-size: 1.8rem;
+            font-weight: bold;
+            color: #38bdf8;
+            letter-spacing: 4px;
+            margin: 20px 0;
+            word-break: break-all;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        button {
+            background: #0284c7;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #0369a1;
+            transform: translateY(-2px);
+        }
+        .btn-copy {
+            background: #334155;
+        }
+        .btn-copy:hover {
+            background: #475569;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-link:hover {
+            background: #0284c7;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>BÀI TẬP TK7: TẠO CHUỖI NGẪU NHIÊN</h1>
+        <div class="student-info">
+            Họ và tên: <strong>Phạm Nguyễn Nhật Anh</strong> | MSSV: <strong>241A010037</strong>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Tạo Mật Khẩu Ngẫu Nhiên (8 Ký Tự)</h2>
+        <p style="color: #cbd5e1; margin-top: 8px;">Bao gồm chữ cái thường và chữ số (a-z, 0-9)</p>
+
+        <div class="pass-box" id="passwordOutput">--------</div>
+
+        <div class="btn-group">
+            <button onclick="generatePassword()">Tạo Mật Khẩu</button>
+            <button class="btn-copy" onclick="copyPassword()">Sao Chép</button>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">&larr; Quay lại Trang Chủ (index.html)</a>
+
+    <script>
+      
+        function generatePassword() {
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let password = '';
+            for (let i = 0; i < 8; i++) {
+                const randomIndex = Math.floor(Math.random() * chars.length);
+                password += chars[randomIndex];
+            }
+            document.getElementById('passwordOutput').innerText = password;
+        }
+
+        function copyPassword() {
+            const password = document.getElementById('passwordOutput').innerText;
+            if (password === '--------') {
+                alert('Vui lòng bấm tạo mật khẩu trước!');
+                return;
+            }
+            navigator.clipboard.writeText(password);
+            alert('Đã sao chép mật khẩu: ' + password);
+        }
+
+  
+        window.onload = generatePassword;
+    </script>
+
+</body>
+</html>
