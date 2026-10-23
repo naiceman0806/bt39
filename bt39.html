@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ Bài Tập - Phạm Nguyễn Nhật Anh</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 900px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+        .student-info {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        h2 {
+            font-size: 1.3rem;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 8px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+        .menu-item {
+            background: #1e293b;
+            border: 1px solid #475569;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #f8fafc;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .menu-item:hover {
+            background: #0284c7;
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+        }
+        .menu-item span {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #38bdf8;
+        }
+        .menu-item:hover span {
+            background: rgba(0,0,0,0.2);
+            color: #fff;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DANH MỤC BÀI TẬP THỰC HÀNH</h1>
+        <div class="student-info">
+            Họ và tên: <strong>Phạm Nguyễn Nhật Anh</strong> | MSSV: <strong>241A010037</strong>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Menu Điều Hướng Bài Tập</h2>
+        <div class="menu-grid">
+            <a href="TK5.html" class="menu-item">Bài Tập TK5 <span>Xem ngay</span></a>
+            <a href="TK7.html" class="menu-item">Bài Tập TK7 <span>Xem ngay</span></a>
+            <a href="TK8.html" class="menu-item">Bài Tập TK8 <span>Xem ngay</span></a>
+            <a href="K4.html" class="menu-item">Bài Tập K4 <span>Xem ngay</span></a>
+            <a href="K6.html" class="menu-item">Bài Tập K6 <span>Xem ngay</span></a>
+            <a href="K8.html" class="menu-item">Bài Tập K8 <span>Xem ngay</span></a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Phạm Nguyễn Nhật Anh - 241A010037</p>
+    </footer>
+
+</body>
+</html>

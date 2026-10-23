@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập K6 - Xử Lý Sự Kiện Bàn Phím</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 15px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            margin-bottom: 6px;
+        }
+        .student-info {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+        .playground {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            background: #1e293b;
+            border: 2px solid #475569;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        #movingBox {
+            width: 60px;
+            height: 60px;
+            background: #38bdf8;
+            border-radius: 8px;
+            position: absolute;
+            top: 140px;
+            left: 270px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #0f172a;
+            box-shadow: 0 4px 10px rgba(56, 189, 248, 0.4);
+            transition: transform 0.05s linear;
+        }
+        .instructions {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-link:hover {
+            background: #0284c7;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>BÀI TẬP K6: XỬ LÝ SỰ KIỆN BÀN PHÍM</h1>
+        <div class="student-info">
+            Họ và tên: <strong>Phạm Nguyễn Nhật Anh</strong> | MSSV: <strong>241A010037</strong>
+        </div>
+    </header>
+
+    <div class="playground" id="playground">
+        <div id="movingBox">Box</div>
+    </div>
+
+    <div class="instructions">
+        Sử dụng các phím <strong>Mũi tên (Lên, Xuống, Trái, Phải)</strong> trên bàn phím để di chuyển khối vuông!
+    </div>
+
+    <a href="bt39.html" class="back-link">&larr; Quay lại Trang Chủ (bt39.html)</a>
+
+    <script>
+        const box = document.getElementById('movingBox');
+        const playground = document.getElementById('playground');
+
+        let posX = 270;
+        let posY = 140;
+        const step = 15;
+
+        document.addEventListener('keydown', (event) => {
+            const maxX = playground.clientWidth - box.clientWidth;
+            const maxY = playground.clientHeight - box.clientHeight;
+
+            switch (event.key) {
+                case 'ArrowUp':
+                    posY = Math.max(0, posY - step);
+                    event.preventDefault(); // Ngăn cuộn trang
+                    break;
+                case 'ArrowDown':
+                    posY = Math.min(maxY, posY + step);
+                    event.preventDefault();
+                    break;
+                case 'ArrowLeft':
+                    posX = Math.max(0, posX - step);
+                    event.preventDefault();
+                    break;
+                case 'ArrowRight':
+                    posX = Math.min(maxX, posX + step);
+                    event.preventDefault();
+                    break;
+            }
+
+            box.style.left = posX + 'px';
+            box.style.top = posY + 'px';
+        });
+    </script>
+
+</body>
+</html>
