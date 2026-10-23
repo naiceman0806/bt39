@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài Tập TK7</title>
+    <title>Bài Tập TK5 - Accordion</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0f172a, #1e293b);
@@ -24,18 +28,62 @@
             border-radius: 12px;
             width: 100%;
             max-width: 600px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             border: 1px solid rgba(255,255,255,0.1);
         }
-        h1 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 8px; }
-        .student-info { font-size: 0.95rem; color: #cbd5e1; }
+        h1 {
+            font-size: 1.5rem;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+        .student-info {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
         .container {
             width: 100%;
             max-width: 600px;
+        }
+        .accordion-item {
             background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
             border: 1px solid #475569;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .accordion-header {
+            background: #334155;
+            color: #f8fafc;
+            padding: 15px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .accordion-header:hover {
+            background: #0284c7;
+        }
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(45deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+            background: #1e293b;
+            padding: 0 20px;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            padding: 15px 20px;
         }
         .back-link {
             display: inline-block;
@@ -48,22 +96,67 @@
             border-radius: 6px;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .back-link:hover { background: #0284c7; color: #fff; }
+        .back-link:hover {
+            background: #0284c7;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>BÀI TẬP TK7</h1>
+        <h1>BÀI TẬP TK5: ACCORDION ĐƠN GIẢN</h1>
         <div class="student-info">
             Họ và tên: <strong>Phạm Nguyễn Nhật Anh</strong> | MSSV: <strong>241A010037</strong>
         </div>
     </header>
+
     <div class="container">
-        <h2>Nội dung Bài tập TK7</h2>
-        <p style="margin-top: 15px; color: #cbd5e1; line-height: 1.6;">
-            Trang thực hành thiết kế giao diện và xử lý sự kiện nâng cao theo đúng chuẩn yêu cầu môn học công nghệ web.
-        </p>
+        <div class="accordion-item">
+            <div class="accordion-header">Giới thiệu về môn học Thiết kế Web</div>
+            <div class="accordion-content">
+                Môn học cung cấp các kiến thức nền tảng và nâng cao về HTML, CSS và JavaScript, giúp xây dựng các giao diện website responsive hiện đại, tối ưu trải nghiệm người dùng.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">Yêu cầu kỹ thuật của bài tập</div>
+            <div class="accordion-content">
+                Sử dụng sự kiện click kết hợp với phương thức classList.toggle() trong JavaScript, cùng thuộc tính max-height và transition trong CSS để tạo hiệu ứng trượt mượt mà.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">Thông tin sinh viên thực hiện</div>
+            <div class="accordion-content">
+                Họ tên: Phạm Nguyễn Nhật Anh<br>
+                Mã sinh viên: 241A010037<br>
+                Thực hành lập trình và deploy trực tiếp lên GitHub Pages.
+            </div>
+        </div>
     </div>
-    <a href="index.html" class="back-link">&larr; Quay lại Trang Chủ (bt39.html)</a>
+
+    <a href="index.html" class="back-link">&larr; Quay lại Trang Chủ (index.html)</a>
+
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                
+                // Đóng các mục khác nếu muốn (tuỳ chọn)
+                document.querySelectorAll('.accordion-item').forEach(acc => {
+                    if (acc !== item) {
+                        acc.classList.remove('active');
+                    }
+                });
+
+                // Bật/tắt trạng thái trượt cho mục hiện tại
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
 </body>
 </html>
